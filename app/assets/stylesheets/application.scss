@@ -1,0 +1,39 @@
+
+// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.navbar-nav > li {
+    float: none;
+    display: inline-block; // puts the display inline w/ the block ex: Hi Joe!
+    margin-right: 30px; // moves the right inside the navbar
+  }
+
+.background-image {
+    background: image-url('background.jpg');
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  width: 100%;
+  background-color: #E3F2FD;
+}
+
+//.vertical-center > .container {
+//      max-width: 50%;
+     // background-color: gold;
+//}
+
+
+
+.vertical-center {
+	text-align: center;
+	position: absolute;
+	width: 50%;
+	left: 25%;
+	top: 25%
+
+  }

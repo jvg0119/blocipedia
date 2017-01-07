@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blocipedia</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class="background-image">
+
+  	<div class="container fluid container-center">
+	
+	  	<header>
+	  		<%= render 'shared/navbar' %>
+	  		<%= render 'shared/flash_message' %>
+	  	</header>
+
+	    <%= yield %>
+
+	    <footer class="footer">
+	    	<span> &copy; 2017 Blocmarks by Joe Garcia</span>
+	    </footer>
+
+  	</div>
+
+  </body>
+
+</html>
