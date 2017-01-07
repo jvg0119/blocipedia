@@ -37,9 +37,11 @@ end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'figaro'
+gem 'figaro', '~> 1.1', '>= 1.1.1'
  
 gem 'pry'
+
+gem 'devise', '~> 4.2'
 
 
 
