@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 	
-	resources :users, only: [:edit, :update]
+  resources :wikis
+	resources :users, only: [:edit, :update, :index]
   devise_for :users
 	get 'index' => 'welcome#index'
   get 'about' => 'welcome#about'
