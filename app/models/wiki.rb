@@ -5,4 +5,10 @@ class Wiki < ApplicationRecord
  	validates :body, 	presence: true, 
   					length: { minimum: 20 } 
 
+  after_initialize :set_default 
+
+  def set_default
+  	self.private = 'false'
+  end
+
 end

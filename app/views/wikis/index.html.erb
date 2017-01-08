@@ -2,7 +2,7 @@
 <!-- <h1>My Wikis</h1> -->
 
 <div class="container">
-  <h2>My Wikis</h2>
+  <h2>Wikis</h2>
   <p></p>            
   <table class="table table-hover">
     <thead>
@@ -21,5 +21,5 @@
 
 <br />
 
-	<%= link_to "Create New Wiki", new_wiki_path, class: "btn btn-success" %>
+	<%= link_to "Create New Wiki", new_wiki_path, class: "btn btn-success" if policy(Wiki.new).create? %>
 </div>

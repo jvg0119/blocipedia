@@ -43,6 +43,8 @@ gem 'pry'
 
 gem 'devise', '~> 4.2'
 
+gem 'pundit', '~> 1.1'
+
 
 
 

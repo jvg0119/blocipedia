@@ -6,4 +6,14 @@ class User < ApplicationRecord
 
   has_many :wikis
 
+  enum role: { standard: 0, premium: 1, admin: 2 } 
+  # enum role: [ :standard, :premium, :admin ]
+
+  after_initialize :set_default 
+ # after_initialize { self.role ||= "standard" }
+
+  def set_default
+  	self.role ||= "standard"
+  end
+
 end

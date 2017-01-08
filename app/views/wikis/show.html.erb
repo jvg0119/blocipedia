@@ -3,5 +3,5 @@
 
 <p><%= @wiki.body %></p>
 
-<%= link_to "Edit", edit_wiki_path(@wiki), class: "btn btn-success" %>
+<%= link_to "Edit", edit_wiki_path(@wiki), class: "btn btn-success" if policy(@wiki).edit? %>
 
