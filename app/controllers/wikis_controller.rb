@@ -6,8 +6,8 @@ class WikisController < ApplicationController
   	#@user = current_user
     #@user = User.find(params[:id])
   	#@wikis = @user.wikis 
-    @wikis = Wiki.all
-    authorize @wikis 	
+    @wikis = Wiki.paginate(page: params[:page], per_page: 10)
+    authorize @wikis
   end
 
   def show

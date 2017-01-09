@@ -15,6 +15,7 @@
 
     	<%= render @wikis %>
 
+
   </table>
 
 
@@ -23,3 +24,6 @@
 
 	<%= link_to "Create New Wiki", new_wiki_path, class: "btn btn-success" if policy(Wiki.new).create? %>
 </div>
+
+<%= will_paginate @wikis %>
+

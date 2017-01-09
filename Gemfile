@@ -29,6 +29,7 @@ group :development, :test do
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'faker', '~> 1.7', '>= 1.7.2'
 end
 
 group :development do
@@ -44,6 +45,11 @@ gem 'pry'
 gem 'devise', '~> 4.2'
 
 gem 'pundit', '~> 1.1'
+
+gem 'will_paginate', '~> 3.1', '>= 3.1.5'
+
+gem 'awesome_print', '~> 1.7'
+
 
 
 
