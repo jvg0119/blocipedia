@@ -50,6 +50,8 @@ gem 'will_paginate', '~> 3.1', '>= 3.1.5'
 
 gem 'awesome_print', '~> 1.7'
 
+gem 'stripe', '~> 1.57', '>= 1.57.1'
+
 
 
 

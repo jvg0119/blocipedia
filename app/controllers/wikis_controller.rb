@@ -1,6 +1,6 @@
 class WikisController < ApplicationController
 
-  before_action :authenticate_user!, except: [:index, :show]
+  #before_action :authenticate_user!, except: [:index, :show]
 
   def index
   	#@user = current_user
@@ -12,12 +12,13 @@ class WikisController < ApplicationController
 
   def show
   	@wiki = Wiki.find(params[:id])
-   # authorize @wiki
+    authorize @wiki
   end
 
   def new
   	#@user = User.find(params)
   	@wiki = Wiki.new
+    authorize @wiki
   end
 
   def create
@@ -44,6 +45,7 @@ class WikisController < ApplicationController
   	#@user = current_user
   	#@wiki = @user.wikis.find(params[:id]) 
     @wiki = Wiki.find(params[:id])
+    authorize @wiki
   	if @wiki.update_attributes(wiki_params)
   		flash[:success] = "Your wiki was updated successfully!"
    		redirect_to wiki_path(@wiki)

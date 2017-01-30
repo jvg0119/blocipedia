@@ -1,8 +1,31 @@
 
-<div class="jumbotron jumbotron-fluid vertical-center" style="background-color: #e3f2fd;">
-  <div class="container">
+<div class="container">
+	<div class="jumbotron jumbotron-fluid" style="background-color: #e3f2fd;">
+  
     <h1 class="display-3">Blocipedia</h1>
-    <p class="lead">This is a a production quality SaaS app that allows users to create their own wikis.</p>
-    <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary" if !current_user %>
-  </div>
-</div>
+    <p class="lead">This is a production quality SaaS app that allows users to create their own wikis.</p>
+			
+	</div>
+ 
+	  <% if current_user && current_user.standard? %>
+
+			<h2>Want to be able to create private wikis?</h2>
+	  	<p>Upgrade to premium account. </p>
+	  	<p>The cost is $15.00.</p>
+	  	<p>Create and manage your private wikis.</p>
+	  	<p>Colaborate with other private groups.</p>
+			<H2><%= link_to "Premium Upgrade", new_charge_path, class: "btn btn-primary" %></H2>
+		<% elsif current_user && current_user.premium? %>
+			<h2>If you want you could downgrade back to the free regular account.</h2>
+	  	<p>Choosing to downgrade your private wikis will become public wikis. </p>
+			<H2><%= link_to "Downgrade to standard", "#", class: "btn btn-primary" %></H2>
+		<% else %>
+			<h2>Want sign up?</h2>
+	  	<p>With a standard account you can create and edit your own public wikis. </p>
+			<H2><%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary" %></H2>		
+
+		<% end %>	
+
+	</div>
+
+<br />
