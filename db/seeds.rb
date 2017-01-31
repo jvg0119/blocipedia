@@ -7,11 +7,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-u1 = User.new(name: "Admin", email: "admin@example.com", password: "password", role: "admin")
+
+u1 = User.new(name: "Joe", email: "joe@example.com", password: "password", role: "premium")
 u1.skip_confirmation!
 u1.save!
 
-u2 = User.new(name: "Joe", email: "joe@example.com", password: "password")
+u2 = User.new(name: "Kelly", email: "kelly@example.com", password: "password", role: "premium")
 u2.skip_confirmation!
 u2.save!
 
@@ -19,10 +20,16 @@ u3 = User.new(name: "Mike", email: "mike@example.com", password: "password")
 u3.skip_confirmation!
 u3.save!
 
-standard_users = [u2, u3]
+u4 = User.new(name: "Terry", email: "terry@example.com", password: "password")
+u4.skip_confirmation!
+u4.save!
 
+all_users = [u1, u2, u3, u4]
+premium_users = [u1, u2]
+
+# public wikis
 1.upto(20) do |n|
-  u = standard_users.sample
+  u = all_users.sample
   w = Wiki.new(
   title: "Wiki title: #{n} -- by #{u.name} -- #{Faker::Book.title}", 
   body: "Wiki body: #{n} -- by #{u.name} -- #{Faker::Hipster.paragraph}",
@@ -31,12 +38,28 @@ standard_users = [u2, u3]
   w.save!
 end
 
+# private wikis
+1.upto(10) do |n|
+  u = premium_users.sample
+  w = Wiki.new(
+  title: "Wiki title: #{n} -- by #{u.name} -- #{Faker::Book.title}", 
+  body: "Wiki body: #{n} -- by #{u.name} -- #{Faker::Hipster.paragraph}",
+  user_id: u.id,
+  private: true
+    )
+  w.save!
+end
 
+u1 = User.new(name: "Admin", email: "admin@example.com", password: "password", role: "admin")
+u1.skip_confirmation!
+u1.save!
 
 
 puts "*".center(40,"*")
 puts 
-puts "#{Wiki.count} wikis created".center(40," ")
+puts "#{Wiki.count} all wikis created".center(40," ")
+puts "#{Wiki.where(private: false).count} public wikis created".center(40," ")
+puts "#{Wiki.where(private: true).count} private wikis created".center(40," ")
 puts "#{User.standard.count} standard users created".center(40," ")
 puts "#{User.premium.count} premium users created".center(40," ")
 puts "#{User.admin.count} admin users created".center(40," ")

@@ -5,10 +5,13 @@ class Wiki < ApplicationRecord
  	validates :body, 	presence: true, 
   					length: { minimum: 20 } 
 
-  after_initialize :set_default 
+  scope :public_wikis, -> { where(private: false) }  					
+  scope :private_wikis, -> { where(private: true) }  					
 
-  def set_default
-  	self.private = 'false'
-  end
+  # after_initialize :set_default ## set default to false instead
+
+  # def set_default
+  # 	self.private = 'false'
+  # end
 
 end

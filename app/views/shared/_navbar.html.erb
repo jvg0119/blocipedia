@@ -1,5 +1,5 @@
 <br/>
-<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+<nav class="navbar navbar-light" style="background-color: #e3f2fd ;">  <!-- #e3f2fd -->
   <div class="container">  
 
   <ul class="nav navbar-nav">
@@ -7,8 +7,14 @@
       <%= link_to "Home", root_path %>
     </li>
     <li class="nav-item active">
-      <%= link_to "Wikis", wikis_path %>
+      <%= link_to "All Public Wikis", wikis_path %>
     </li>
+
+    <li class="nav-item active">
+      <%= link_to "Private Wikis", user_path(current_user) if current_user && (current_user.premium? || current_user.admin?) %>
+    </li>
+
+
     <li class="nav-item">
       <%= link_to "About", about_path %>
     </li>

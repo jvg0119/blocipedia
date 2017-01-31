@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
 
 	resources :charges, only: [:create, :new]
+	post 'charges/down_grade' => 'charges#down_grade'
 
   resources :wikis
-	
-	resources :users, only: [:edit, :update, :index]
   
   devise_for :users
-	
+	resources :users, only: [:edit, :update, :show]
+
 	get 'index' => 'welcome#index'
   get 'about' => 'welcome#about'
 

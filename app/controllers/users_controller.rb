@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
-
+	before_action :authenticate_user!
 	before_action :set_user, only: [:edit, :update]
+
+	def show
+		@private_wikis = current_user.wikis.private_wikis.paginate(page: params[:page], per_page: 10)
+	end
 
 	def edit
 	end

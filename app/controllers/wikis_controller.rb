@@ -1,13 +1,10 @@
 class WikisController < ApplicationController
 
-  #before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
-  	#@user = current_user
-    #@user = User.find(params[:id])
-  	#@wikis = @user.wikis 
-    @wikis = Wiki.paginate(page: params[:page], per_page: 10)
-    authorize @wikis
+    @public_wikis = Wiki.public_wikis.paginate(page: params[:page], per_page: 10)
+    authorize @public_wikis
   end
 
   def show
@@ -16,7 +13,6 @@ class WikisController < ApplicationController
   end
 
   def new
-  	#@user = User.find(params)
   	@wiki = Wiki.new
     authorize @wiki
   end
@@ -24,6 +20,7 @@ class WikisController < ApplicationController
   def create
   	@user = current_user
   	@wiki = @user.wikis.new(wiki_params)
+    #raise
   	if @wiki.save
   		flash[:success] = "Your wiki was created successfully!"
   		redirect_to wikis_path
@@ -72,7 +69,7 @@ class WikisController < ApplicationController
 private
 
 	def wiki_params
-		params.require(:wiki).permit(:title, :body)
+		params.require(:wiki).permit(:title, :body, :private)
 	end
 
 end
