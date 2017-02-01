@@ -52,6 +52,8 @@ gem 'awesome_print', '~> 1.7'
 
 gem 'stripe', '~> 1.57', '>= 1.57.1'
 
+gem 'redcarpet', '~> 3.4'
+
 
 
 
